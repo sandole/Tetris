@@ -2,11 +2,12 @@ import pygame
 import random
 
 pygame.init()
-SCREEN = WIDTH, HEIGHT = 300, 500
+SCREEN = WIDTH, HEIGHT = 300, 600
+UI_SIZE = 120
 win = pygame.display.set_mode(SCREEN, pygame.NOFRAME)
 
-CELLSIZE = 20
-ROWS = (HEIGHT-120) // CELLSIZE
+CELLSIZE = 30
+ROWS = (HEIGHT-UI_SIZE) // CELLSIZE
 COLS = WIDTH // CELLSIZE
 
 clock = pygame.time.Clock()
@@ -89,7 +90,7 @@ class Tetris:
 		for i in range(self.rows+1):
 			pygame.draw.line(win, WHITE, (0, CELLSIZE*i), (WIDTH, CELLSIZE*i))
 		for j in range(self.cols):
-			pygame.draw.line(win, WHITE, (CELLSIZE*j, 0), (CELLSIZE*j, HEIGHT-120))
+			pygame.draw.line(win, WHITE, (CELLSIZE*j, 0), (CELLSIZE*j, HEIGHT-UI_SIZE))
 
 	def new_figure(self):
 		if not self.next:
@@ -255,7 +256,7 @@ while running:
 
 	# HUD ********************************************************************
 
-	pygame.draw.rect(win, BLUE, (0, HEIGHT-120, WIDTH, 120))
+	pygame.draw.rect(win, BLUE, (0, HEIGHT-UI_SIZE, WIDTH, UI_SIZE))
 	if tetris.next:
 		for i in range(4):
 			for j in range(4):
@@ -270,7 +271,7 @@ while running:
 	win.blit(scoreimg, (250-scoreimg.get_width()//2, HEIGHT-110))
 	win.blit(levelimg, (250-levelimg.get_width()//2, HEIGHT-30))
 
-	pygame.draw.rect(win, BLUE, (0, 0, WIDTH, HEIGHT-120), 2)
+	pygame.draw.rect(win, BLUE, (0, 0, WIDTH, HEIGHT-UI_SIZE), 2)
 	clock.tick(FPS)
 	pygame.display.update()
 pygame.quit()
