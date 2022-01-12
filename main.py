@@ -83,6 +83,7 @@ class Tetris:
 		self.level = 1
 		self.board = [[0 for j in range(cols)] for i in range(rows)]
 		self.next = None
+		self.hold = None
 		self.gameover = False
 		self.new_figure()
 
@@ -162,8 +163,16 @@ class Tetris:
 			self.figure.rotation = rotation
 
 	def hold(self):
-    	#TODO
-		pass
+    	#TODO implement event after user presses 'c' for hold
+		
+		# self.next.type
+		# self.next.color
+		if not self.next:
+			#TODO implement hold for no hold space
+			pass
+		else:
+			#TODO implement hold for something in hold space
+			pass
 
 counter = 0
 move_down = False
@@ -268,8 +277,19 @@ while running:
 
 	scoreimg = font.render(f'{tetris.score}', True, WHITE)
 	levelimg = font2.render(f'Level : {tetris.level}', True, WHITE)
-	win.blit(scoreimg, (250-scoreimg.get_width()//2, HEIGHT-110))
-	win.blit(levelimg, (250-levelimg.get_width()//2, HEIGHT-30))
+	win.blit(scoreimg, (250-scoreimg.get_width()//2, HEIGHT-100))
+	win.blit(levelimg, (250-levelimg.get_width()//2, HEIGHT-20))
+
+	#TODO
+	# for i in range(4):
+	# 	for j in range(4):
+	# 			if i * 4 + j in tetris.figure.image():
+	# 				img = Assets[tetris.figure.color]
+	# 				x = CELLSIZE * (tetris.figure.x + j - 4)
+	# 				y = HEIGHT - 100 + CELLSIZE * (tetris.figure.y + i)
+	# 				win.blit(img, (x, y))
+	test = font2.render(str(tetris.figure.color) + str(Assets[tetris.next.color]), True, WHITE)
+	win.blit(test, (250-test.get_width()//2, HEIGHT-40))
 
 	pygame.draw.rect(win, BLUE, (0, 0, WIDTH, HEIGHT-UI_SIZE), 2)
 	clock.tick(FPS)
