@@ -22,7 +22,7 @@ WHITE = (255, 255, 255)
 
 # IMAGES ********************************************************************* 
 
-img1 = pygame.image.load('Assets/1.png')
+img1 = pygame.image.load('Assets/1_new.png')
 img2 = pygame.image.load('Assets/2.png')
 img3 = pygame.image.load('Assets/3.png')
 img4 = pygame.image.load('Assets/4.png')
